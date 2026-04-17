@@ -31,8 +31,8 @@ const Textarea = ({ label, value, onChange, placeholder, hint, rows = 3 }) => (
 )
 
 const Section = ({ title, children, accent = '#a855f7' }) => (
-  <div className="bg-white/3 border border-white/8 rounded-2xl p-6">
-    <h2 className="font-black text-sm tracking-widest mb-5 uppercase" style={{ color: accent }}>{title}</h2>
+  <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-4 sm:p-6">
+    <h2 className="font-black text-xs sm:text-sm tracking-widest mb-4 sm:mb-5 uppercase" style={{ color: accent }}>{title}</h2>
     <div className="flex flex-col gap-4">{children}</div>
   </div>
 )
@@ -62,7 +62,7 @@ function ExperienceEntry({ entry, onChange, onRemove, t }) {
 
   return (
     <div className="bg-black/20 rounded-xl p-4 flex flex-col gap-3 border border-white/5">
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <Input label={t('form.position')} value={entry.position || ''} onChange={v => update('position', v)} />
         <Input label={t('form.company')} value={entry.company || ''} onChange={v => update('company', v)} />
         <Input label={t('form.start_date')} value={entry.startDate || ''} onChange={v => update('startDate', v)} placeholder="2022-03" />
@@ -189,22 +189,22 @@ export default function FormPage() {
   const showWebsite = template === 'recommended'
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <button onClick={() => navigate('/templates')} className="text-sm text-slate-500 hover:text-slate-300 mb-8 flex items-center gap-2">
+    <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <button onClick={() => navigate('/templates')} className="text-sm text-slate-500 hover:text-slate-300 mb-6 sm:mb-8 flex items-center gap-2 transition-colors">
         ← {t('form.back')}
       </button>
 
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-3 h-8 rounded-full" style={{ background: accent }} />
-        <h1 className="text-2xl font-black uppercase tracking-wider" style={{ color: accent }}>
-          {t(`templates.${template === 'recommended' ? 'recommended' : template}_name`)}
+      <div className="flex items-center gap-3 mb-6 sm:mb-8">
+        <div className="w-1.5 h-8 sm:h-10 rounded-full" style={{ background: accent }} />
+        <h1 className="text-xl sm:text-3xl font-black uppercase tracking-wider" style={{ color: accent }}>
+          {t(`templates.${template}_name`)}
         </h1>
       </div>
 
       <div className="flex flex-col gap-6">
         {/* Personal */}
         <Section title={t('form.personal')} accent={accent}>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Input label={t('form.name')} value={data.name} onChange={v => set('name', v)} />
             <Input label={t('form.email')} value={data.email} onChange={v => set('email', v)} type="email" />
             <Input label={t('form.phone')} value={data.phone} onChange={v => set('phone', v)} />
@@ -244,7 +244,7 @@ export default function FormPage() {
         <Section title={t('form.education')} accent={accent}>
           {data.education.map((e, i) => (
             <div key={i} className="bg-black/20 rounded-xl p-4 flex flex-col gap-3 border border-white/5">
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Input label={t('form.degree')} value={e.degree} onChange={v => setListItem('education', i, { ...e, degree: v })} />
                 <Input label={t('form.institution')} value={e.institution} onChange={v => setListItem('education', i, { ...e, institution: v })} />
                 <Input label={t('form.year')} value={e.year} onChange={v => setListItem('education', i, { ...e, year: v })} />
@@ -266,7 +266,7 @@ export default function FormPage() {
         {/* Languages */}
         <Section title={t('form.languages')} accent={accent}>
           {data.languages.map((l, i) => (
-            <div key={i} className="grid grid-cols-2 gap-3 bg-black/20 rounded-xl p-3 border border-white/5">
+            <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-black/20 rounded-xl p-3 border border-white/5">
               <Input label={t('form.language_name')} value={l.name} onChange={v => setListItem('languages', i, { ...l, name: v })} />
               <div className="flex flex-col gap-1">
                 <label className="text-xs text-slate-400 font-medium">{t('form.language_level')}</label>
@@ -290,7 +290,7 @@ export default function FormPage() {
           <Section title={t('form.certifications')} accent={accent}>
             {data.certifications.map((c, i) => (
               <div key={i} className="bg-black/20 rounded-xl p-4 flex flex-col gap-3 border border-white/5">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Input label={t('form.cert_name')} value={c.name} onChange={v => setListItem('certifications', i, { ...c, name: v })} />
                   <Input label={t('form.cert_issuer')} value={c.issuer} onChange={v => setListItem('certifications', i, { ...c, issuer: v })} />
                   <Input label={t('form.cert_year')} value={c.year} onChange={v => setListItem('certifications', i, { ...c, year: v })} />
@@ -307,7 +307,7 @@ export default function FormPage() {
           <Section title={t('form.projects')} accent={accent}>
             {data.projects.map((p, i) => (
               <div key={i} className="bg-black/20 rounded-xl p-4 flex flex-col gap-3 border border-white/5">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Input label={t('form.project_name')} value={p.name} onChange={v => setListItem('projects', i, { ...p, name: v })} />
                   <Input label={t('form.project_url')} value={p.url} onChange={v => setListItem('projects', i, { ...p, url: v })} />
                 </div>
@@ -324,7 +324,7 @@ export default function FormPage() {
           <Section title={t('form.complementary')} accent={accent}>
             {data.complementary.map((c, i) => (
               <div key={i} className="bg-black/20 rounded-xl p-4 flex flex-col gap-3 border border-white/5">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Input label={t('form.cert_name')} value={c.name} onChange={v => setListItem('complementary', i, { ...c, name: v })} />
                   <Input label={t('form.institution')} value={c.institution} onChange={v => setListItem('complementary', i, { ...c, institution: v })} />
                   <Input label={t('form.year')} value={c.year} onChange={v => setListItem('complementary', i, { ...c, year: v })} />
@@ -341,7 +341,7 @@ export default function FormPage() {
           <Section title={t('form.references')} accent={accent}>
             {data.references.map((r, i) => (
               <div key={i} className="bg-black/20 rounded-xl p-4 flex flex-col gap-3 border border-white/5">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Input label={t('form.ref_name')} value={r.name} onChange={v => setListItem('references', i, { ...r, name: v })} />
                   <Input label={t('form.ref_position')} value={r.position} onChange={v => setListItem('references', i, { ...r, position: v })} />
                   <Input label={t('form.ref_company')} value={r.company} onChange={v => setListItem('references', i, { ...r, company: v })} />
@@ -365,7 +365,7 @@ export default function FormPage() {
         {showSocial && (
           <Section title={t('form.social')} accent={accent}>
             {data.social.map((s, i) => (
-              <div key={i} className="grid grid-cols-2 gap-3 bg-black/20 rounded-xl p-3 border border-white/5">
+              <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-black/20 rounded-xl p-3 border border-white/5">
                 <Input label={t('form.social_platform')} value={s.platform} onChange={v => setListItem('social', i, { ...s, platform: v })} placeholder="Instagram" />
                 <Input label={t('form.social_handle')} value={s.handle} onChange={v => setListItem('social', i, { ...s, handle: v })} placeholder="@usuario" />
                 <RemoveBtn onClick={() => removeItem('social', i)} />

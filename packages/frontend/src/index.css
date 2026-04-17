@@ -6,13 +6,47 @@
   padding: 0;
 }
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+html, body {
+  width: 100%;
+  min-height: 100vh;
   background: #0f0f1a;
   color: #e2e8f0;
-  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top, rgba(124, 58, 237, 0.15), transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(236, 72, 153, 0.08), transparent 50%),
+    #0f0f1a;
+  background-attachment: fixed;
 }
 
 #root {
   min-height: 100vh;
+  width: 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0a0a14; }
+::-webkit-scrollbar-thumb { background: rgba(168, 85, 247, 0.3); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.5); }
+
+/* Firefox */
+* { scrollbar-width: thin; scrollbar-color: rgba(168, 85, 247, 0.3) #0a0a14; }
+
+/* Inputs on iOS shouldn't zoom */
+input, textarea, select { font-size: 16px; }
+@media (min-width: 640px) {
+  input, textarea, select { font-size: 14px; }
+}
+
+/* Focus ring consistent */
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid rgba(168, 85, 247, 0.6);
+  outline-offset: 2px;
 }
