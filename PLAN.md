@@ -154,7 +154,7 @@ fabriculumm/
 - [ ] 8.4 Loading state PDF (ya implementado en botón)
 - [ ] 8.5 Mensaje de éxito post-descarga con opción de volver a editar
 - [ ] 8.6 Responsive mobile: revisar Navbar en mobile (hamburger menu)
-- [ ] 8.7 Test de generación PDF con datos reales para los 5 templates
+- [x] 8.7 Test de generación PDF con datos reales para los 5 templates (10 PDFs OK — ver test-output/)
 
 ### FASE 9 — Deploy
 - [ ] 9.1 Configurar package.json scripts para Railway (build:backend usa cp que falla en Windows → usar node script)
