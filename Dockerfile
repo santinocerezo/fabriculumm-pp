@@ -24,23 +24,21 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 WORKDIR /app
 
-# Copy package files first for better caching
-COPY package*.json ./
-COPY packages/frontend/package*.json ./packages/frontend/
-COPY packages/backend/package*.json ./packages/backend/
-
-# Force NODE_ENV=development for this RUN only so devDeps (Vite, Tailwind) install correctly
-RUN NODE_ENV=development npm install --include=dev
-
-# Copy rest of the source
 COPY . .
 
-# Build frontend + backend
-RUN npm run build:frontend && npm run build:backend
+# Build frontend in its own directory (bypass workspace hoisting)
+WORKDIR /app/packages/frontend
+RUN NODE_ENV=development npm install --include=dev
+RUN npm run build
 
-# NODE_ENV production only after build — so Express serves the dist frontend
+# Build backend in its own directory
+WORKDIR /app/packages/backend
+RUN npm install --omit=dev
+RUN npm run build
+
+WORKDIR /app
+
 ENV NODE_ENV=production
-
 EXPOSE 3001
 
-CMD ["npm", "run", "start:backend"]
+CMD ["node", "packages/backend/src/index.js"]
