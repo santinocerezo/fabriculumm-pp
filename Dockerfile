@@ -29,8 +29,8 @@ COPY package*.json ./
 COPY packages/frontend/package*.json ./packages/frontend/
 COPY packages/backend/package*.json ./packages/backend/
 
-# Install ALL deps (including dev) for the build step
-RUN npm install
+# Force install ALL deps (including dev) — Railway may inject NODE_ENV=production at build time
+RUN npm install --include=dev --production=false
 
 # Copy rest of the source
 COPY . .
