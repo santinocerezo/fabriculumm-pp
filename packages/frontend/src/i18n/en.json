@@ -5,11 +5,21 @@
     "create": "Create CV"
   },
   "landing": {
+    "hero_badge": "100% FREE · NO SIGN-UP",
     "hero_title": "The factory of the",
     "hero_highlight": "best CV of your life",
     "hero_subtitle": "Create your professional CV in minutes. Designed to pass HR AI filters and land the interview.",
     "hero_cta": "Create my CV now",
     "hero_cta_sub": "Free. No registration. Ready to download.",
+    "stat_templates": "Templates",
+    "stat_ats": "Optimized",
+    "stat_pdf": "Download",
+    "stat_free": "Free",
+    "stat_free_label": "Forever",
+    "ats_highlight_badge": "RECOMMENDED",
+    "ats_highlight_title": "The only template that guarantees maximum ATS compatibility",
+    "ats_highlight_desc": "Built following the official guidelines of LinkedIn, Indeed, Workday and SAP SuccessFactors. One column, universal typography, no tables or images. Exactly what algorithms want to read.",
+    "footer": "FABRICULUMM © 2025 · Made with 💜 in Argentina",
     "ats_title": "Why do our CVs pass ATS filters?",
     "ats_subtitle": "75% of CVs are rejected by automated systems before a human ever sees them.",
     "ats_1_title": "Recognizable structure",
@@ -115,7 +125,15 @@
     "generate": "Download PDF",
     "generating": "Generating your CV...",
     "preview": "Preview",
-    "back": "Back"
+    "preview_live": "Live update",
+    "back": "Back",
+    "clear": "Clear data",
+    "clear_confirm": "Clear all form data? This cannot be undone.",
+    "autosaved": "Auto-saved",
+    "success_title": "Your CV is ready!",
+    "success_desc": "The PDF was downloaded automatically.",
+    "keep_editing": "Keep editing",
+    "download_again": "Download again"
   },
   "levels": {
     "native": "Native",

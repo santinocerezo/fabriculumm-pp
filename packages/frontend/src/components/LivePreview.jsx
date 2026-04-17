@@ -329,7 +329,7 @@ export default function LivePreview({ template, data, lang = 'es' }) {
 
   return (
     <div className="w-full aspect-[1/1.414] bg-white rounded-xl overflow-hidden shadow-2xl shadow-black/50 ring-1 ring-white/10">
-      <div className="w-full h-full overflow-hidden">
+      <div className="w-full h-full overflow-y-auto">
         <Render data={data} lang={lang} />
       </div>
     </div>

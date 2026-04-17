@@ -5,11 +5,21 @@
     "create": "Crear CV"
   },
   "landing": {
+    "hero_badge": "100% GRATIS · SIN REGISTRO",
     "hero_title": "La fábrica del",
     "hero_highlight": "mejor CV de tu vida",
     "hero_subtitle": "Creá tu CV profesional en minutos. Diseñado para pasar los filtros de IA de RRHH y llegar a la entrevista.",
     "hero_cta": "Crear mi CV ahora",
     "hero_cta_sub": "Gratis. Sin registro. Listo para descargar.",
+    "stat_templates": "Templates",
+    "stat_ats": "Optimizado",
+    "stat_pdf": "Descarga",
+    "stat_free": "Gratis",
+    "stat_free_label": "Para siempre",
+    "ats_highlight_badge": "RECOMENDADO",
+    "ats_highlight_title": "El único template que garantiza máxima compatibilidad ATS",
+    "ats_highlight_desc": "Desarrollado siguiendo las guías oficiales de LinkedIn, Indeed, Workday y SAP SuccessFactors. Una columna, tipografía universal, sin tablas ni imágenes. Exactamente lo que los algoritmos quieren leer.",
+    "footer": "FABRICULUMM © 2025 · Hecho con 💜 en Argentina",
     "ats_title": "¿Por qué nuestros CVs pasan los filtros ATS?",
     "ats_subtitle": "El 75% de los CVs son rechazados por sistemas automáticos antes de que un humano los vea.",
     "ats_1_title": "Estructura reconocible",
@@ -115,7 +125,15 @@
     "generate": "Descargar PDF",
     "generating": "Generando tu CV...",
     "preview": "Vista previa",
-    "back": "Volver"
+    "preview_live": "Actualización en vivo",
+    "back": "Volver",
+    "clear": "Borrar datos",
+    "clear_confirm": "¿Borrar todos los datos del formulario? No se puede deshacer.",
+    "autosaved": "Guardado automático",
+    "success_title": "¡Tu CV está listo!",
+    "success_desc": "El PDF se descargó automáticamente.",
+    "keep_editing": "Seguir editando",
+    "download_again": "Descargar de nuevo"
   },
   "levels": {
     "native": "Nativo",

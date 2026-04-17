@@ -48,9 +48,12 @@ const AddBtn = ({ label, onClick }) => (
   </button>
 )
 
-const RemoveBtn = ({ onClick }) => (
-  <button type="button" onClick={onClick} className="text-xs text-red-400/80 hover:text-red-300 self-end transition-colors">✕ Eliminar</button>
-)
+const RemoveBtn = ({ onClick }) => {
+  const { t } = useTranslation()
+  return (
+    <button type="button" onClick={onClick} className="text-xs text-red-400/80 hover:text-red-300 self-end transition-colors">✕ {t('form.remove')}</button>
+  )
+}
 
 // ── Experience entry ───────────────────────────────────────────────────────────
 function ExperienceEntry({ entry, onChange, onRemove, t }) {
@@ -167,7 +170,7 @@ export default function FormPage() {
   const removeItem = (key, i) => setData(d => ({ ...d, [key]: d[key].filter((_, j) => j !== i) }))
 
   function clearForm() {
-    if (!confirm('¿Borrar todos los datos del formulario? No se puede deshacer.')) return
+    if (!confirm(t('form.clear_confirm'))) return
     setData(initialData)
     localStorage.removeItem(storageKey)
   }
@@ -225,10 +228,10 @@ export default function FormPage() {
           ← {t('form.back')}
         </button>
         <div className="flex items-center gap-3">
-          <button onClick={clearForm} className="text-xs text-slate-500 hover:text-red-400 transition-colors">🗑 Borrar datos</button>
+          <button onClick={clearForm} className="text-xs text-slate-500 hover:text-red-400 transition-colors">🗑 {t('form.clear')}</button>
           <div className="hidden lg:flex items-center gap-1.5 text-xs text-emerald-400/70">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Guardado automático
+            {t('form.autosaved')}
           </div>
         </div>
       </div>
@@ -397,11 +400,11 @@ export default function FormPage() {
           {downloaded && (
             <div className="bg-emerald-900/30 border border-emerald-500/40 rounded-2xl p-6 text-center">
               <div className="text-4xl mb-3">🎉</div>
-              <h3 className="font-black text-emerald-400 text-lg mb-2">¡Tu CV está listo!</h3>
-              <p className="text-slate-400 text-sm mb-4">El PDF se descargó automáticamente.</p>
+              <h3 className="font-black text-emerald-400 text-lg mb-2">{t('form.success_title')}</h3>
+              <p className="text-slate-400 text-sm mb-4">{t('form.success_desc')}</p>
               <div className="flex flex-wrap gap-3 justify-center">
-                <button onClick={() => setDownloaded(false)} className="text-sm px-5 py-2.5 rounded-xl border border-white/10 text-slate-300 hover:border-white/30 transition-all">✏️ Seguir editando</button>
-                <button onClick={handleGenerate} className="text-sm font-bold px-5 py-2.5 rounded-xl text-white transition-all" style={{ background: accent }}>⬇ Descargar de nuevo</button>
+                <button onClick={() => setDownloaded(false)} className="text-sm px-5 py-2.5 rounded-xl border border-white/10 text-slate-300 hover:border-white/30 transition-all">✏️ {t('form.keep_editing')}</button>
+                <button onClick={handleGenerate} className="text-sm font-bold px-5 py-2.5 rounded-xl text-white transition-all" style={{ background: accent }}>⬇ {t('form.download_again')}</button>
               </div>
             </div>
           )}
@@ -426,7 +429,7 @@ export default function FormPage() {
           <div className="sticky top-20">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">{t('form.preview')}</h3>
-              <span className="text-[10px] text-slate-600 uppercase tracking-wider">Actualización en vivo</span>
+              <span className="text-[10px] text-slate-600 uppercase tracking-wider">{t('form.preview_live')}</span>
             </div>
             <LivePreview template={template} data={data} lang={i18n.language} />
           </div>

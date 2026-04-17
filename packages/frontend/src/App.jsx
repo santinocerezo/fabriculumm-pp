@@ -6,7 +6,7 @@ import Navbar from './components/Navbar.jsx'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0f0f1a] text-slate-100">
+    <div className="min-h-screen text-slate-100">
       <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />

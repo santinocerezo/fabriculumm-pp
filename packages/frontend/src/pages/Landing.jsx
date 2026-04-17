@@ -35,11 +35,6 @@ export default function Landing() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-violet-600/20 rounded-full blur-[140px] pointer-events-none -z-10" />
       <div className="absolute top-[40%] right-0 w-[500px] h-[500px] bg-fuchsia-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-      {/* Ad top banner */}
-      <div className="w-full bg-white/[0.02] border-b border-white/5 h-14 flex items-center justify-center">
-        <span className="text-[10px] lg:text-xs text-white/20 tracking-[0.3em]">PUBLICIDAD · ADVERTISEMENT</span>
-      </div>
-
       {/* Main container — consistent 1200px max */}
       <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12">
 
@@ -47,7 +42,7 @@ export default function Landing() {
         <section className="pt-16 pb-20 lg:pt-28 lg:pb-32 text-center">
           <div className="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-bold tracking-[0.2em] px-4 py-2 rounded-full mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-            100% GRATIS · SIN REGISTRO
+            {t('landing.hero_badge')}
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black mb-6 lg:mb-8 leading-[0.95] tracking-tight">
@@ -74,10 +69,10 @@ export default function Landing() {
 
           {/* Stats grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-16 lg:mt-24 max-w-4xl mx-auto">
-            <Stat n="5" label="Templates" />
-            <Stat n="ATS" label="Optimizado" />
-            <Stat n="PDF" label="Descarga" />
-            <Stat n="0€" label="Para siempre" />
+            <Stat n="5" label={t('landing.stat_templates')} />
+            <Stat n="ATS" label={t('landing.stat_ats')} />
+            <Stat n="PDF" label={t('landing.stat_pdf')} />
+            <Stat n={t('landing.stat_free')} label={t('landing.stat_free_label')} />
           </div>
         </section>
 
@@ -105,14 +100,13 @@ export default function Landing() {
             <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-violet-500/30 rounded-full blur-3xl pointer-events-none" />
             <div className="relative max-w-3xl mx-auto">
               <div className="inline-block bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-xs font-black tracking-[0.25em] px-4 py-1.5 rounded-full mb-6 shadow-lg shadow-violet-500/50">
-                ★ RECOMMENDED
+                ★ {t('landing.ats_highlight_badge')}
               </div>
               <h3 className="text-2xl lg:text-3xl font-black text-white mb-4 leading-tight">
-                El único template que garantiza máxima compatibilidad ATS
+                {t('landing.ats_highlight_title')}
               </h3>
               <p className="text-slate-300 text-base lg:text-lg leading-relaxed">
-                Desarrollado siguiendo las guías oficiales de LinkedIn, Indeed, Workday y SAP SuccessFactors.
-                Una columna, tipografía universal, sin tablas ni imágenes. Exactamente lo que los algoritmos quieren leer.
+                {t('landing.ats_highlight_desc')}
               </p>
             </div>
           </div>
@@ -151,7 +145,7 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className="border-t border-white/5 py-8 lg:py-10 text-center text-xs lg:text-sm text-slate-600 px-4">
-        FABRICULUMM © 2025 · Hecho con 💜 en Argentina
+        {t('landing.footer')}
       </footer>
     </main>
   )
