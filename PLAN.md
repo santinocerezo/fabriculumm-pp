@@ -130,7 +130,7 @@ fabriculumm/
 - [x] 5.5 Secciones del formulario para CREATIVO
 - [x] 5.6 Secciones del formulario para EJECUTIVO
 - [x] 5.7 Campos dinámicos: agregar/eliminar entradas (múltiples trabajos, educaciones, etc.)
-- [ ] 5.8 Preview en vivo del CV mientras se completa el formulario
+- [x] 5.8 Preview en vivo del CV mientras se completa el formulario (componente LivePreview.jsx — desktop sticky + modal mobile)
 - [x] 5.9 Validación de campos requeridos (nombre)
 
 ### FASE 6 — Templates de CV (HTML para Puppeteer)
@@ -148,12 +148,12 @@ fabriculumm/
 - [x] 7.5 Manejo de errores
 
 ### FASE 8 — Polish y detalles finales
-- [ ] 8.1 Favicon y meta tags (SEO) — crear public/index.html con title/meta
-- [ ] 8.2 Verificar ads placeholders en Landing (ya presentes, revisar visualmente)
-- [ ] 8.3 Animaciones suaves (ya hay hover effects, agregar page transitions)
-- [ ] 8.4 Loading state PDF (ya implementado en botón)
-- [ ] 8.5 Mensaje de éxito post-descarga con opción de volver a editar
-- [ ] 8.6 Responsive mobile: revisar Navbar en mobile (hamburger menu)
+- [x] 8.1 Favicon SVG y meta tags SEO completos (theme-color, og:*, twitter:*, keywords, robots)
+- [x] 8.2 Ads placeholders en Landing (banner superior + sidebars en xl)
+- [x] 8.3 Animaciones: page transitions CSS (fadeUp), hover effects, respect prefers-reduced-motion
+- [x] 8.4 Loading state PDF en botón
+- [x] 8.5 Mensaje de éxito post-descarga con opción de seguir editando
+- [x] 8.6 Navbar mobile con hamburger menu
 - [x] 8.7 Test de generación PDF con datos reales para los 5 templates (10 PDFs OK — ver test-output/)
 
 ### FASE 9 — Deploy
