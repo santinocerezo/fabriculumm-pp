@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install -y \
 # Use system chromium, skip Puppeteer's bundled download
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
-ENV NODE_ENV=production
 
 WORKDIR /app
 
@@ -30,6 +29,7 @@ COPY package*.json ./
 COPY packages/frontend/package*.json ./packages/frontend/
 COPY packages/backend/package*.json ./packages/backend/
 
+# Install ALL deps (including dev) for the build step
 RUN npm install
 
 # Copy rest of the source
@@ -37,6 +37,9 @@ COPY . .
 
 # Build frontend + backend
 RUN npm run build:frontend && npm run build:backend
+
+# NODE_ENV production only after build — so Express serves the dist frontend
+ENV NODE_ENV=production
 
 EXPOSE 3001
 
