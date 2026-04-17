@@ -131,6 +131,7 @@ export default function FormPage() {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [downloaded, setDownloaded] = useState(false)
 
   const set = (key, val) => setData(d => ({ ...d, [key]: val }))
 
@@ -166,6 +167,7 @@ export default function FormPage() {
       a.download = `fabriculumm-cv-${template}.pdf`
       a.click()
       URL.revokeObjectURL(url)
+      setDownloaded(true)
     } catch {
       setError(t('errors.pdf_error'))
     } finally {
@@ -376,18 +378,44 @@ export default function FormPage() {
         {/* Error */}
         {error && <p className="text-red-400 text-sm text-center">{error}</p>}
 
+        {/* Success state */}
+        {downloaded && (
+          <div className="bg-green-900/30 border border-green-500/40 rounded-2xl p-6 text-center">
+            <div className="text-4xl mb-3">🎉</div>
+            <h3 className="font-black text-green-400 text-lg mb-2">¡Tu CV está listo!</h3>
+            <p className="text-slate-400 text-sm mb-4">El PDF se descargó automáticamente.</p>
+            <div className="flex gap-3 justify-center">
+              <button
+                onClick={() => setDownloaded(false)}
+                className="text-sm px-4 py-2 rounded-xl border border-white/10 text-slate-300 hover:border-white/30 transition-all"
+              >
+                ✏️ Seguir editando
+              </button>
+              <button
+                onClick={handleGenerate}
+                className="text-sm font-bold px-4 py-2 rounded-xl text-white transition-all"
+                style={{ background: accent }}
+              >
+                ⬇ Descargar de nuevo
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Generate button */}
-        <button
-          onClick={handleGenerate}
-          disabled={loading}
-          className="w-full py-4 rounded-2xl font-black text-lg text-white shadow-lg transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{
-            background: loading ? '#444' : `linear-gradient(135deg, ${accent}, ${accent}99)`,
-            boxShadow: `0 0 24px ${accent}33`,
-          }}
-        >
-          {loading ? `⏳ ${t('form.generating')}` : `⬇ ${t('form.generate')}`}
-        </button>
+        {!downloaded && (
+          <button
+            onClick={handleGenerate}
+            disabled={loading}
+            className="w-full py-4 rounded-2xl font-black text-lg text-white shadow-lg transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{
+              background: loading ? '#444' : `linear-gradient(135deg, ${accent}, ${accent}99)`,
+              boxShadow: `0 0 24px ${accent}33`,
+            }}
+          >
+            {loading ? `⏳ ${t('form.generating')}` : `⬇ ${t('form.generate')}`}
+          </button>
+        )}
       </div>
     </main>
   )

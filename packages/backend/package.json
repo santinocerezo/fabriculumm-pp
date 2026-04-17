@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node --watch src/index.js",
-    "build": "mkdir -p dist && cp -r src/* dist/",
+    "build": "node -e \"require('fs').cpSync('src','dist',{recursive:true})\"",
     "start": "node src/index.js"
   },
   "dependencies": {
