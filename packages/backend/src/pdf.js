@@ -15,6 +15,16 @@ const renderers = {
   ejecutivo:   renderEjecutivo,
 };
 
+// Solo permitimos recursos embebidos (data:) o about:blank. Cualquier URL
+// externa (http, https, file, ftp) se bloquea para evitar SSRF y data leaks.
+function shouldBlock(url) {
+  if (!url) return true;
+  const u = url.toLowerCase();
+  if (u.startsWith('data:')) return false;
+  if (u === 'about:blank') return false;
+  return true;
+}
+
 async function generatePdf({ template, data, lang }) {
   const render = renderers[template];
   if (!render) throw new Error(`Unknown template: ${template}`);
@@ -29,7 +39,15 @@ async function generatePdf({ template, data, lang }) {
 
   try {
     const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: 'networkidle0' });
+
+    // Bloquea cualquier request externo antes de que cargue contenido.
+    await page.setRequestInterception(true);
+    page.on('request', req => {
+      if (shouldBlock(req.url())) req.abort();
+      else req.continue();
+    });
+
+    await page.setContent(html, { waitUntil: 'domcontentloaded', timeout: 15000 });
     const pdf = await page.pdf({
       format: 'A4',
       printBackground: true,
