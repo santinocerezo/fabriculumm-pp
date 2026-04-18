@@ -221,7 +221,7 @@ export default function FormPage() {
   const showWebsite = template === 'recommended'
 
   return (
-    <main className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12 py-10 lg:py-16">
+    <main className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-10 lg:py-16">
       {/* Header */}
       <div className="flex items-center justify-between mb-10 gap-3 flex-wrap">
         <button onClick={() => navigate('/templates')} className="text-sm text-slate-500 hover:text-slate-300 flex items-center gap-2 transition-colors">
