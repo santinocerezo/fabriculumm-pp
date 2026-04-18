@@ -90,8 +90,14 @@ export default function Landing() {
       </section>
 
       {/* ── Features ── */}
-      <section className="container-page py-20 lg:py-28 border-t border-white/5">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 lg:gap-8">
+      <section className="container-page pt-32 pb-40 lg:pt-40 lg:pb-56 border-t border-white/10">
+        <div className="text-center max-w-xl mx-auto mb-20 lg:mb-24">
+          <div className="text-[11px] font-bold tracking-[0.3em] uppercase text-violet-400 mb-4">Por qué FABRICULUMM</div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
+            {t('landing.ats_title')}
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20 lg:gap-12 max-w-4xl mx-auto">
           <Feature icon="⚡" title={t('landing.ats_1_title')} desc={t('landing.ats_1_desc')} />
           <Feature icon="🎯" title={t('landing.ats_2_title')} desc={t('landing.ats_2_desc')} />
           <Feature icon="✨" title={t('landing.ats_4_title')} desc={t('landing.ats_4_desc')} />
@@ -99,16 +105,16 @@ export default function Landing() {
       </section>
 
       {/* ── Recommended highlight ── */}
-      <section className="container-page py-20 lg:py-28 border-t border-white/5">
+      <section className="container-page py-40 lg:py-56 border-t border-white/10">
         <div className="max-w-3xl mx-auto">
-          <div className="relative overflow-hidden bg-gradient-to-br from-violet-900/40 via-fuchsia-900/20 to-violet-900/40 border border-violet-500/25 rounded-3xl p-10 lg:p-14 text-center">
+          <div className="relative overflow-hidden bg-gradient-to-br from-violet-900/40 via-fuchsia-900/20 to-violet-900/40 border border-violet-500/25 rounded-3xl p-12 lg:p-16 text-center">
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-fuchsia-500/15 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-violet-500/20 rounded-full blur-3xl pointer-events-none" />
             <div className="relative">
               <div className="inline-block bg-violet-500 text-white text-[10px] font-black tracking-[0.3em] px-4 py-1.5 rounded-full mb-6">
                 ★ {t('landing.ats_highlight_badge')}
               </div>
-              <h2 className="text-3xl lg:text-4xl font-black text-white mb-5 leading-tight tracking-tight">
+              <h2 className="text-3xl lg:text-4xl font-black text-white mb-6 leading-tight tracking-tight">
                 {t('landing.ats_highlight_title')}
               </h2>
               <p className="text-slate-300 text-base leading-relaxed max-w-lg mx-auto">
@@ -120,9 +126,9 @@ export default function Landing() {
       </section>
 
       {/* ── CTA bottom ── */}
-      <section className="container-page py-24 lg:py-32 border-t border-white/5">
+      <section className="container-page py-40 lg:py-56 border-t border-white/10">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-10">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-12">
             {t('landing.cta_title')}
           </h2>
           <Link
@@ -136,8 +142,8 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/5">
-        <div className="container-page py-8 text-center text-xs text-slate-600">
+      <footer className="border-t border-white/10">
+        <div className="container-page py-10 text-center text-xs text-slate-600">
           {t('landing.footer')}
         </div>
       </footer>
