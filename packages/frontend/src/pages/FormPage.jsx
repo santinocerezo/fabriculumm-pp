@@ -221,9 +221,9 @@ export default function FormPage() {
   const showWebsite = template === 'recommended'
 
   return (
-    <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <main className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6 lg:mb-8">
+      <div className="flex items-center justify-between mb-6 lg:mb-8 gap-3 flex-wrap">
         <button onClick={() => navigate('/templates')} className="text-sm text-slate-500 hover:text-slate-300 flex items-center gap-2 transition-colors">
           ← {t('form.back')}
         </button>
@@ -244,7 +244,7 @@ export default function FormPage() {
       </div>
 
       {/* 2-col layout: form + live preview */}
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_520px] xl:grid-cols-[minmax(0,1fr)_600px] gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_480px] xl:grid-cols-[minmax(0,1fr)_540px] gap-6 lg:gap-8">
 
         {/* FORM */}
         <div className="flex flex-col gap-5">

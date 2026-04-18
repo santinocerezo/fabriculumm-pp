@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-[#0a0a14]/90 backdrop-blur border-b border-white/5">
-      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12 h-14 flex items-center justify-between">
+      <div className="max-w-[1760px] mx-auto px-5 sm:px-8 lg:px-12 h-14 flex items-center justify-between">
         <Link to="/" className="text-lg font-black tracking-widest text-violet-400 hover:text-violet-300 transition-colors">
           FABRICULUMM
         </Link>

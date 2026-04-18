@@ -139,8 +139,48 @@ export default function TemplateSelector() {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
+  const recommended = TEMPLATES.find(tt => tt.recommended)
+  const others = TEMPLATES.filter(tt => !tt.recommended)
+
+  const renderCard = (tmpl, featured = false) => (
+    <button
+      key={tmpl.id}
+      onClick={() => navigate(`/form/${tmpl.id}`)}
+      className={`relative text-left bg-gradient-to-br ${tmpl.gradient} border border-white/10 rounded-3xl p-6 lg:p-7 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-2 hover:ring-2 ${tmpl.ring} group cursor-pointer ${featured ? 'lg:flex-row lg:items-stretch lg:gap-8 lg:p-8' : ''}`}
+    >
+      {tmpl.recommended && (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-xs font-black tracking-[0.25em] px-4 py-1.5 rounded-full shadow-lg shadow-violet-500/50 whitespace-nowrap z-10">
+          ★ {t('templates.recommended_badge')}
+        </div>
+      )}
+
+      <div className={`rounded-2xl overflow-hidden bg-white/5 p-2 group-hover:scale-[1.02] transition-transform duration-300 ${featured ? 'h-56 lg:h-72 lg:w-1/2 lg:shrink-0' : 'h-48 lg:h-56'}`}>
+        <tmpl.Preview />
+      </div>
+
+      <div className={`flex-1 flex flex-col gap-2 ${featured ? 'lg:justify-center lg:gap-4' : ''}`}>
+        <div className={`flex items-baseline gap-2 ${featured ? 'flex-col items-start gap-1' : 'justify-between'}`}>
+          <h3 className={`font-black tracking-[0.15em] ${featured ? 'text-xl lg:text-2xl' : 'text-base lg:text-lg'}`} style={{ color: tmpl.color }}>
+            {t(`templates.${tmpl.id}_name`)}
+          </h3>
+          <span className={`text-xs shrink-0 ${featured ? 'text-slate-400' : 'text-slate-500'}`}>{tmpl.tagline}</span>
+        </div>
+        <p className={`text-slate-300 leading-relaxed ${featured ? 'text-sm lg:text-base' : 'text-sm lg:text-base'}`}>
+          {t(`templates.${tmpl.id}_desc`)}
+        </p>
+
+        <div
+          className={`py-3 rounded-xl font-bold text-sm text-center text-white transition-all group-hover:scale-[1.02] ${featured ? 'mt-2 lg:mt-4' : 'mt-auto'}`}
+          style={{ background: tmpl.color, boxShadow: `0 0 24px ${tmpl.color}40` }}
+        >
+          {t('templates.select_btn')} →
+        </div>
+      </div>
+    </button>
+  )
+
   return (
-    <main className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12 py-12 lg:py-20">
+    <main className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-10 py-12 lg:py-20">
       <div className="text-center mb-12 lg:mb-16">
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black mb-4 text-white leading-[1.05] tracking-tight">
           {t('templates.title')}
@@ -150,44 +190,14 @@ export default function TemplateSelector() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
-        {TEMPLATES.map(tmpl => (
-          <button
-            key={tmpl.id}
-            onClick={() => navigate(`/form/${tmpl.id}`)}
-            className={`relative text-left bg-gradient-to-br ${tmpl.gradient} border border-white/10 rounded-3xl p-6 lg:p-7 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-2 hover:ring-2 ${tmpl.ring} group cursor-pointer`}
-          >
-            {tmpl.recommended && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-xs font-black tracking-[0.25em] px-4 py-1.5 rounded-full shadow-lg shadow-violet-500/50 whitespace-nowrap">
-                ★ {t('templates.recommended_badge')}
-              </div>
-            )}
+      {recommended && (
+        <div className="mb-6 lg:mb-8">
+          {renderCard(recommended, true)}
+        </div>
+      )}
 
-            {/* Visual preview */}
-            <div className="h-48 lg:h-56 rounded-2xl overflow-hidden bg-white/5 p-2 group-hover:scale-[1.02] transition-transform duration-300">
-              <tmpl.Preview />
-            </div>
-
-            <div className="flex-1 flex flex-col gap-2">
-              <div className="flex items-baseline justify-between gap-2">
-                <h3 className="font-black tracking-[0.15em] text-base lg:text-lg" style={{ color: tmpl.color }}>
-                  {t(`templates.${tmpl.id}_name`)}
-                </h3>
-                <span className="text-xs text-slate-500 shrink-0">{tmpl.tagline}</span>
-              </div>
-              <p className="text-slate-300 text-sm lg:text-base leading-relaxed">
-                {t(`templates.${tmpl.id}_desc`)}
-              </p>
-            </div>
-
-            <div
-              className="py-3 rounded-xl font-bold text-sm text-center text-white transition-all group-hover:scale-[1.02]"
-              style={{ background: tmpl.color, boxShadow: `0 0 24px ${tmpl.color}40` }}
-            >
-              {t('templates.select_btn')} →
-            </div>
-          </button>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
+        {others.map(tmpl => renderCard(tmpl, false))}
       </div>
     </main>
   )

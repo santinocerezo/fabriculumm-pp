@@ -35,11 +35,11 @@ export default function Landing() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-violet-600/20 rounded-full blur-[140px] pointer-events-none -z-10" />
       <div className="absolute top-[40%] right-0 w-[500px] h-[500px] bg-fuchsia-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-      {/* Main container — consistent 1200px max */}
-      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12">
+      {/* Main container — consistent max width, centered */}
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-10">
 
         {/* ── Hero ── */}
-        <section className="pt-16 pb-20 lg:pt-28 lg:pb-32 text-center">
+        <section className="pt-14 pb-20 lg:pt-24 lg:pb-28 text-center flex flex-col items-center">
           <div className="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-bold tracking-[0.2em] px-4 py-2 rounded-full mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
             {t('landing.hero_badge')}
@@ -144,7 +144,7 @@ export default function Landing() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-8 lg:py-10 text-center text-xs lg:text-sm text-slate-600 px-4">
+      <footer className="max-w-[1100px] mx-auto border-t border-white/5 py-8 lg:py-10 text-center text-xs lg:text-sm text-slate-600 px-5 sm:px-8 lg:px-10">
         {t('landing.footer')}
       </footer>
     </main>
