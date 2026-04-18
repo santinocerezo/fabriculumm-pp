@@ -67,8 +67,10 @@ const sampleData = {
   ],
 };
 
+const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3001';
+
 async function testTemplate(template, lang = 'es') {
-  const res = await fetch('http://localhost:3099/api/generate-pdf', {
+  const res = await fetch(`${BACKEND_URL}/api/generate-pdf`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ template, data: sampleData, lang }),
