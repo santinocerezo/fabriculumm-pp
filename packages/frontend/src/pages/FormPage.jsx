@@ -32,9 +32,9 @@ const Textarea = ({ label, value, onChange, placeholder, hint, rows = 3 }) => (
 )
 
 const Section = ({ title, children, accent = '#a855f7' }) => (
-  <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-5 lg:p-6">
-    <h2 className="font-black text-xs lg:text-sm tracking-[0.25em] mb-5 uppercase" style={{ color: accent }}>{title}</h2>
-    <div className="flex flex-col gap-4">{children}</div>
+  <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 lg:p-8">
+    <h2 className="font-black text-xs tracking-[0.3em] mb-6 uppercase" style={{ color: accent }}>{title}</h2>
+    <div className="flex flex-col gap-5">{children}</div>
   </div>
 )
 
@@ -221,13 +221,13 @@ export default function FormPage() {
   const showWebsite = template === 'recommended'
 
   return (
-    <main className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <main className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10 py-10 lg:py-16">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6 lg:mb-8 gap-3 flex-wrap">
+      <div className="flex items-center justify-between mb-10 gap-3 flex-wrap">
         <button onClick={() => navigate('/templates')} className="text-sm text-slate-500 hover:text-slate-300 flex items-center gap-2 transition-colors">
           ← {t('form.back')}
         </button>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <button onClick={clearForm} className="text-xs text-slate-500 hover:text-red-400 transition-colors">🗑 {t('form.clear')}</button>
           <div className="hidden lg:flex items-center gap-1.5 text-xs text-emerald-400/70">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -236,18 +236,18 @@ export default function FormPage() {
         </div>
       </div>
 
-      <div className="flex items-center gap-3 mb-8 lg:mb-10">
-        <div className="w-1.5 h-10 lg:h-12 rounded-full" style={{ background: accent }} />
-        <h1 className="text-2xl lg:text-4xl font-black uppercase tracking-[0.15em]" style={{ color: accent }}>
+      <div className="flex items-center gap-4 mb-12 lg:mb-14">
+        <div className="w-1 h-10 lg:h-12 rounded-full" style={{ background: accent }} />
+        <h1 className="text-2xl lg:text-3xl font-black uppercase tracking-[0.2em]" style={{ color: accent }}>
           {t(`templates.${template}_name`)}
         </h1>
       </div>
 
       {/* 2-col layout: form + live preview */}
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_480px] xl:grid-cols-[minmax(0,1fr)_540px] gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_460px] xl:grid-cols-[minmax(0,1fr)_520px] gap-8 lg:gap-10">
 
         {/* FORM */}
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-6">
           <Section title={t('form.personal')} accent={accent}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input label={t('form.name')} value={data.name} onChange={v => set('name', v)} />

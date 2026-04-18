@@ -146,32 +146,32 @@ export default function TemplateSelector() {
     <button
       key={tmpl.id}
       onClick={() => navigate(`/form/${tmpl.id}`)}
-      className={`relative text-left bg-gradient-to-br ${tmpl.gradient} border border-white/10 rounded-3xl p-6 lg:p-7 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-2 hover:ring-2 ${tmpl.ring} group cursor-pointer ${featured ? 'lg:flex-row lg:items-stretch lg:gap-8 lg:p-8' : ''}`}
+      className={`relative text-left bg-white/[0.02] border border-white/10 rounded-3xl p-7 flex flex-col gap-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.04] hover:ring-1 ${tmpl.ring} group cursor-pointer ${featured ? 'lg:flex-row lg:items-center lg:gap-10 lg:p-10' : ''}`}
     >
       {tmpl.recommended && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-xs font-black tracking-[0.25em] px-4 py-1.5 rounded-full shadow-lg shadow-violet-500/50 whitespace-nowrap z-10">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-[10px] font-black tracking-[0.3em] px-4 py-1.5 rounded-full shadow-lg shadow-violet-500/40 whitespace-nowrap z-10">
           ★ {t('templates.recommended_badge')}
         </div>
       )}
 
-      <div className={`rounded-2xl overflow-hidden bg-white/5 p-2 group-hover:scale-[1.02] transition-transform duration-300 ${featured ? 'h-56 lg:h-72 lg:w-1/2 lg:shrink-0' : 'h-48 lg:h-56'}`}>
+      <div className={`rounded-2xl overflow-hidden bg-black/20 p-3 group-hover:scale-[1.02] transition-transform duration-300 ${featured ? 'h-56 lg:h-72 lg:w-1/2 lg:shrink-0' : 'h-52'}`}>
         <tmpl.Preview />
       </div>
 
-      <div className={`flex-1 flex flex-col gap-2 ${featured ? 'lg:justify-center lg:gap-4' : ''}`}>
-        <div className={`flex items-baseline gap-2 ${featured ? 'flex-col items-start gap-1' : 'justify-between'}`}>
-          <h3 className={`font-black tracking-[0.15em] ${featured ? 'text-xl lg:text-2xl' : 'text-base lg:text-lg'}`} style={{ color: tmpl.color }}>
+      <div className={`flex-1 flex flex-col gap-3 ${featured ? 'lg:gap-5' : ''}`}>
+        <div className="flex flex-col gap-1.5">
+          <h3 className={`font-black tracking-[0.2em] uppercase ${featured ? 'text-xl lg:text-2xl' : 'text-base'}`} style={{ color: tmpl.color }}>
             {t(`templates.${tmpl.id}_name`)}
           </h3>
-          <span className={`text-xs shrink-0 ${featured ? 'text-slate-400' : 'text-slate-500'}`}>{tmpl.tagline}</span>
+          <span className="text-xs text-slate-500">{tmpl.tagline}</span>
         </div>
-        <p className={`text-slate-300 leading-relaxed ${featured ? 'text-sm lg:text-base' : 'text-sm lg:text-base'}`}>
+        <p className="text-slate-400 text-sm leading-relaxed">
           {t(`templates.${tmpl.id}_desc`)}
         </p>
 
         <div
-          className={`py-3 rounded-xl font-bold text-sm text-center text-white transition-all group-hover:scale-[1.02] ${featured ? 'mt-2 lg:mt-4' : 'mt-auto'}`}
-          style={{ background: tmpl.color, boxShadow: `0 0 24px ${tmpl.color}40` }}
+          className={`py-3 px-5 rounded-xl font-bold text-sm text-center text-white transition-all group-hover:scale-[1.02] ${featured ? 'mt-2 lg:mt-3 lg:self-start lg:px-8' : 'mt-auto'}`}
+          style={{ background: tmpl.color, boxShadow: `0 8px 24px ${tmpl.color}30` }}
         >
           {t('templates.select_btn')} →
         </div>
@@ -180,23 +180,23 @@ export default function TemplateSelector() {
   )
 
   return (
-    <main className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-10 py-12 lg:py-20">
-      <div className="text-center mb-12 lg:mb-16">
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black mb-4 text-white leading-[1.05] tracking-tight">
+    <main className="max-w-[960px] mx-auto px-6 sm:px-8 py-20 lg:py-28">
+      <div className="text-center mb-16 lg:mb-20">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-5 text-white leading-tight tracking-tight">
           {t('templates.title')}
         </h1>
-        <p className="text-slate-400 text-base lg:text-lg max-w-xl mx-auto">
+        <p className="text-slate-400 text-base max-w-lg mx-auto">
           {t('templates.subtitle')}
         </p>
       </div>
 
       {recommended && (
-        <div className="mb-6 lg:mb-8">
+        <div className="mb-10 lg:mb-12">
           {renderCard(recommended, true)}
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         {others.map(tmpl => renderCard(tmpl, false))}
       </div>
     </main>
