@@ -142,63 +142,42 @@ export default function TemplateSelector() {
   const recommended = TEMPLATES.find(tt => tt.recommended)
   const others = TEMPLATES.filter(tt => !tt.recommended)
 
-  const renderCard = (tmpl, featured = false) => (
+  const renderCard = (tmpl) => (
     <button
       key={tmpl.id}
       onClick={() => navigate(`/form/${tmpl.id}`)}
-      className={`relative text-left bg-white/[0.02] border border-white/10 rounded-3xl p-7 flex flex-col gap-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.04] hover:ring-1 ${tmpl.ring} group cursor-pointer ${featured ? 'lg:flex-row lg:items-center lg:gap-10 lg:p-10' : ''}`}
+      className={`relative text-left bg-white/[0.02] border border-white/10 rounded-2xl p-5 flex flex-col gap-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.04] hover:ring-1 ${tmpl.ring} group cursor-pointer`}
     >
       {tmpl.recommended && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-[10px] font-black tracking-[0.3em] px-4 py-1.5 rounded-full shadow-lg shadow-violet-500/40 whitespace-nowrap z-10">
+        <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-violet-500 text-white text-[10px] font-black tracking-[0.25em] px-3 py-1 rounded-full whitespace-nowrap z-10">
           ★ {t('templates.recommended_badge')}
         </div>
       )}
 
-      <div className={`rounded-2xl overflow-hidden bg-black/20 p-3 group-hover:scale-[1.02] transition-transform duration-300 ${featured ? 'h-56 lg:h-72 lg:w-1/2 lg:shrink-0' : 'h-52'}`}>
+      <div className="rounded-xl overflow-hidden bg-black/20 p-2 h-48 group-hover:scale-[1.02] transition-transform duration-300">
         <tmpl.Preview />
       </div>
 
-      <div className={`flex-1 flex flex-col gap-3 ${featured ? 'lg:gap-5' : ''}`}>
-        <div className="flex flex-col gap-1.5">
-          <h3 className={`font-black tracking-[0.2em] uppercase ${featured ? 'text-xl lg:text-2xl' : 'text-base'}`} style={{ color: tmpl.color }}>
-            {t(`templates.${tmpl.id}_name`)}
-          </h3>
-          <span className="text-xs text-slate-500">{tmpl.tagline}</span>
-        </div>
-        <p className="text-slate-400 text-sm leading-relaxed">
-          {t(`templates.${tmpl.id}_desc`)}
-        </p>
-
-        <div
-          className={`py-3 px-5 rounded-xl font-bold text-sm text-center text-white transition-all group-hover:scale-[1.02] ${featured ? 'mt-2 lg:mt-3 lg:self-start lg:px-8' : 'mt-auto'}`}
-          style={{ background: tmpl.color, boxShadow: `0 8px 24px ${tmpl.color}30` }}
-        >
-          {t('templates.select_btn')} →
-        </div>
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="font-bold tracking-[0.15em] uppercase text-sm" style={{ color: tmpl.color }}>
+          {t(`templates.${tmpl.id}_name`)}
+        </h3>
+        <span className="text-slate-500 text-lg group-hover:text-white group-hover:translate-x-0.5 transition-all">→</span>
       </div>
     </button>
   )
 
   return (
     <main className="container-page py-20 lg:py-28">
-      <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-20">
+      <div className="text-center max-w-xl mx-auto mb-14 lg:mb-16">
         <div className="text-[11px] font-bold tracking-[0.3em] uppercase text-violet-400 mb-4">Templates</div>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-5 text-white leading-tight tracking-tight">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
           {t('templates.title')}
         </h1>
-        <p className="text-slate-400 text-base leading-relaxed">
-          {t('templates.subtitle')}
-        </p>
       </div>
 
-      {recommended && (
-        <div className="mb-8 lg:mb-10">
-          {renderCard(recommended, true)}
-        </div>
-      )}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {others.map(tmpl => renderCard(tmpl, false))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {TEMPLATES.map(tmpl => renderCard(tmpl))}
       </div>
     </main>
   )

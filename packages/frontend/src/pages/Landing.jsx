@@ -1,37 +1,46 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-const ATSCard = ({ icon, title, desc }) => (
-  <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 lg:p-8 hover:border-violet-500/40 transition-colors">
-    <div className="text-2xl mb-4">{icon}</div>
-    <h3 className="font-semibold text-white text-lg mb-2">{title}</h3>
-    <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
-  </div>
-)
-
-const GuideCard = ({ name, desc, accent }) => (
-  <div
-    className="border rounded-2xl p-6 lg:p-7 bg-white/[0.01] hover:bg-white/[0.03] transition-colors"
-    style={{ borderColor: accent + '26' }}
-  >
-    <div className="font-bold text-[11px] tracking-[0.25em] mb-3" style={{ color: accent }}>{name}</div>
-    <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
-  </div>
-)
-
-const Stat = ({ n, label }) => (
+const Feature = ({ icon, title, desc }) => (
   <div className="text-center">
-    <div className="text-3xl lg:text-4xl font-black bg-gradient-to-br from-violet-300 to-fuchsia-400 bg-clip-text text-transparent">{n}</div>
-    <div className="text-[11px] text-slate-500 mt-2 uppercase tracking-[0.2em]">{label}</div>
+    <div className="w-14 h-14 mx-auto mb-5 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-2xl">
+      {icon}
+    </div>
+    <h3 className="font-semibold text-white text-base mb-2">{title}</h3>
+    <p className="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">{desc}</p>
   </div>
 )
 
-const SectionTitle = ({ eyebrow, children }) => (
-  <div className="text-center max-w-2xl mx-auto">
-    {eyebrow && <div className="text-[11px] font-bold tracking-[0.3em] uppercase text-violet-400 mb-4">{eyebrow}</div>}
-    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
-      {children}
-    </h2>
+const CVMock = () => (
+  <div className="relative mx-auto w-full max-w-sm aspect-[3/4] rounded-2xl bg-white shadow-2xl shadow-violet-900/40 p-6 overflow-hidden rotate-1 hover:rotate-0 transition-transform duration-500">
+    <div className="border-b-2 border-slate-900 pb-3 mb-4">
+      <div className="h-3 w-32 bg-slate-900 rounded mb-2" />
+      <div className="flex gap-2">
+        <div className="h-1 w-14 bg-slate-400 rounded" />
+        <div className="h-1 w-10 bg-slate-400 rounded" />
+        <div className="h-1 w-8 bg-slate-400 rounded" />
+      </div>
+    </div>
+    <div className="h-1.5 w-20 bg-slate-800 rounded mb-2" />
+    <div className="h-0.5 w-full bg-slate-300 rounded mb-1" />
+    <div className="h-0.5 w-5/6 bg-slate-300 rounded mb-4" />
+    <div className="h-1.5 w-24 bg-slate-800 rounded mb-2" />
+    <div className="h-0.5 w-full bg-slate-300 rounded mb-1" />
+    <div className="h-0.5 w-4/5 bg-slate-300 rounded mb-1" />
+    <div className="h-0.5 w-3/4 bg-slate-300 rounded mb-4" />
+    <div className="h-1.5 w-16 bg-slate-800 rounded mb-2" />
+    <div className="h-0.5 w-full bg-slate-300 rounded mb-1" />
+    <div className="h-0.5 w-2/3 bg-slate-300 rounded mb-4" />
+    <div className="flex gap-1.5 flex-wrap">
+      <div className="h-3 w-10 bg-violet-100 border border-violet-300 rounded-full" />
+      <div className="h-3 w-12 bg-violet-100 border border-violet-300 rounded-full" />
+      <div className="h-3 w-8 bg-violet-100 border border-violet-300 rounded-full" />
+      <div className="h-3 w-14 bg-violet-100 border border-violet-300 rounded-full" />
+    </div>
+    {/* ATS badge */}
+    <div className="absolute top-4 right-4 bg-emerald-500 text-white text-[9px] font-black tracking-widest px-2 py-1 rounded-full shadow-lg">
+      ATS ✓
+    </div>
   </div>
 )
 
@@ -41,93 +50,72 @@ export default function Landing() {
   return (
     <main>
       {/* ── Hero ── */}
-      <section className="container-page pt-20 pb-24 lg:pt-28 lg:pb-32">
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/20 text-violet-300 text-[11px] font-bold tracking-[0.2em] px-4 py-2 rounded-full mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-            {t('landing.hero_badge')}
-          </div>
+      <section className="container-page pt-16 pb-24 lg:pt-24 lg:pb-32 relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-violet-600/15 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-[1.05] tracking-tight">
-            <span className="block text-white">{t('landing.hero_title')}</span>
-            <span className="block mt-2 bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
-              {t('landing.hero_highlight')}
-            </span>
-          </h1>
-
-          <p className="text-slate-400 text-base lg:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            {t('landing.hero_subtitle')}
-          </p>
-
-          <div className="flex flex-col items-center gap-3">
-            <Link
-              to="/templates"
-              className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-semibold text-base px-8 py-3.5 rounded-full shadow-lg shadow-violet-500/20 transition-all hover:scale-[1.03]"
-            >
-              {t('landing.hero_cta')}
-              <span>→</span>
-            </Link>
-            <p className="text-slate-500 text-xs">{t('landing.hero_cta_sub')}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Stats band ── */}
-      <section className="border-y border-white/5">
-        <div className="container-page py-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <Stat n="5" label={t('landing.stat_templates')} />
-            <Stat n="ATS" label={t('landing.stat_ats')} />
-            <Stat n="PDF" label={t('landing.stat_pdf')} />
-            <Stat n={t('landing.stat_free')} label={t('landing.stat_free_label')} />
-          </div>
-        </div>
-      </section>
-
-      {/* ── ATS section ── */}
-      <section className="container-page py-24 lg:py-32">
-        <SectionTitle eyebrow="ATS Ready">
-          {t('landing.ats_title')}
-        </SectionTitle>
-        <p className="text-slate-400 text-center text-base max-w-xl mx-auto mt-5 mb-16 leading-relaxed">
-          {t('landing.ats_subtitle')}
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
-          <ATSCard icon="🏗️" title={t('landing.ats_1_title')} desc={t('landing.ats_1_desc')} />
-          <ATSCard icon="🔑" title={t('landing.ats_2_title')} desc={t('landing.ats_2_desc')} />
-          <ATSCard icon="🔤" title={t('landing.ats_3_title')} desc={t('landing.ats_3_desc')} />
-          <ATSCard icon="📋" title={t('landing.ats_4_title')} desc={t('landing.ats_4_desc')} />
-        </div>
-
-        {/* RECOMMENDED highlight */}
-        <div className="mt-16 max-w-3xl mx-auto">
-          <div className="relative overflow-hidden bg-gradient-to-br from-violet-900/30 to-fuchsia-900/20 border border-violet-500/25 rounded-3xl p-10 lg:p-12 text-center">
-            <div className="inline-block bg-violet-500 text-white text-[10px] font-black tracking-[0.3em] px-4 py-1.5 rounded-full mb-5">
-              ★ {t('landing.ats_highlight_badge')}
+        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
+          <div className="text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/20 text-violet-300 text-[11px] font-bold tracking-[0.2em] px-4 py-2 rounded-full mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+              {t('landing.hero_badge')}
             </div>
-            <h3 className="text-2xl lg:text-3xl font-black text-white mb-4 leading-tight">
-              {t('landing.ats_highlight_title')}
-            </h3>
-            <p className="text-slate-300 text-base leading-relaxed max-w-xl mx-auto">
-              {t('landing.ats_highlight_desc')}
+
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-[1.02] tracking-tight">
+              <span className="block text-white">{t('landing.hero_title')}</span>
+              <span className="block mt-1 bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+                {t('landing.hero_highlight')}
+              </span>
+            </h1>
+
+            <p className="text-slate-400 text-base lg:text-lg mb-10 leading-relaxed max-w-md mx-auto lg:mx-0">
+              {t('landing.hero_subtitle')}
             </p>
+
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 sm:gap-5">
+              <Link
+                to="/templates"
+                className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-semibold text-base px-8 py-3.5 rounded-full shadow-lg shadow-violet-500/30 transition-all hover:scale-[1.03]"
+              >
+                {t('landing.hero_cta')}
+                <span>→</span>
+              </Link>
+              <p className="text-slate-500 text-xs">{t('landing.hero_cta_sub')}</p>
+            </div>
+          </div>
+
+          <div className="hidden lg:block">
+            <CVMock />
           </div>
         </div>
       </section>
 
-      {/* ── Guide section ── */}
-      <section className="container-page py-24 lg:py-32 border-t border-white/5">
-        <SectionTitle eyebrow="Templates">
-          {t('landing.guide_title')}
-        </SectionTitle>
+      {/* ── Features ── */}
+      <section className="container-page py-20 lg:py-28 border-t border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 lg:gap-8">
+          <Feature icon="⚡" title={t('landing.ats_1_title')} desc={t('landing.ats_1_desc')} />
+          <Feature icon="🎯" title={t('landing.ats_2_title')} desc={t('landing.ats_2_desc')} />
+          <Feature icon="✨" title={t('landing.ats_4_title')} desc={t('landing.ats_4_desc')} />
+        </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
-          <GuideCard name={t('landing.guide_recommended_title')} desc={t('landing.guide_recommended_desc')} accent="#a855f7" />
-          <GuideCard name={t('landing.guide_moderno_title')} desc={t('landing.guide_moderno_desc')} accent="#3b82f6" />
-          <GuideCard name={t('landing.guide_minimalista_title')} desc={t('landing.guide_minimalista_desc')} accent="#94a3b8" />
-          <GuideCard name={t('landing.guide_creativo_title')} desc={t('landing.guide_creativo_desc')} accent="#ec4899" />
-          <GuideCard name={t('landing.guide_ejecutivo_title')} desc={t('landing.guide_ejecutivo_desc')} accent="#f59e0b" />
+      {/* ── Recommended highlight ── */}
+      <section className="container-page py-20 lg:py-28 border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
+          <div className="relative overflow-hidden bg-gradient-to-br from-violet-900/40 via-fuchsia-900/20 to-violet-900/40 border border-violet-500/25 rounded-3xl p-10 lg:p-14 text-center">
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-fuchsia-500/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-violet-500/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative">
+              <div className="inline-block bg-violet-500 text-white text-[10px] font-black tracking-[0.3em] px-4 py-1.5 rounded-full mb-6">
+                ★ {t('landing.ats_highlight_badge')}
+              </div>
+              <h2 className="text-3xl lg:text-4xl font-black text-white mb-5 leading-tight tracking-tight">
+                {t('landing.ats_highlight_title')}
+              </h2>
+              <p className="text-slate-300 text-base leading-relaxed max-w-lg mx-auto">
+                {t('landing.ats_highlight_desc')}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -139,7 +127,7 @@ export default function Landing() {
           </h2>
           <Link
             to="/templates"
-            className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-semibold text-base px-10 py-4 rounded-full shadow-lg shadow-violet-500/20 transition-all hover:scale-[1.03]"
+            className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 text-white font-semibold text-base px-10 py-4 rounded-full shadow-lg shadow-violet-500/30 transition-all hover:scale-[1.03]"
           >
             {t('landing.cta_btn')}
             <span>→</span>
