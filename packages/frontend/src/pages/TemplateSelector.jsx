@@ -180,7 +180,7 @@ export default function TemplateSelector() {
   )
 
   return (
-    <main className="max-w-[960px] mx-auto px-6 sm:px-8 py-20 lg:py-28">
+    <main className="max-w-[1120px] mx-auto px-6 sm:px-10 lg:px-12 py-20 lg:py-28">
       <div className="text-center mb-16 lg:mb-20">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-5 text-white leading-tight tracking-tight">
           {t('templates.title')}

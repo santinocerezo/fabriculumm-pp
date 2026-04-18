@@ -34,7 +34,7 @@ export default function Landing() {
       {/* Decorative gradient blobs */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-violet-600/10 rounded-full blur-[160px] pointer-events-none -z-10" />
 
-      <div className="max-w-[960px] mx-auto px-6 sm:px-8">
+      <div className="max-w-[1120px] mx-auto px-6 sm:px-10 lg:px-12">
 
         {/* ── Hero ── */}
         <section className="pt-24 pb-32 lg:pt-32 lg:pb-40 text-center flex flex-col items-center">
